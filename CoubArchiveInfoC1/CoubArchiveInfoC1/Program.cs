@@ -12,16 +12,20 @@ namespace CoubArchiveInfoC1
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
+        static void CoubList()
+        {
+
+        }
         static void Main(string[] args)
         {
             try
             {
-                Logger.Info("Hello world");
+               //Logger.Info("Nice");
                 System.Console.ReadKey();
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Goodbye cruel world");
+                Logger.Error(ex, "Some bad");
 
 
             }
