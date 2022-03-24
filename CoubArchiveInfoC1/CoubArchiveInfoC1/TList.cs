@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Net;
 
 namespace CoubArchiveInfoC1
 {
@@ -31,8 +32,16 @@ namespace CoubArchiveInfoC1
             current++;
         }
 
-        public void GetFiles()
+        public string Cur()
         {
+            return list[current];
+        }
+        public void GetFiles(string path, string name)
+        {
+            WebClient wcj = new WebClient();
+            string remoteUri = "http://coub.com/api/v2/coubs/"+name;
+            string fileName = "D:\\CurrentDir\\Coubs\\radiumds\\json\\"+name+".json";
+            wcj.DownloadFile(remoteUri, fileName);
         }
     }
 }
