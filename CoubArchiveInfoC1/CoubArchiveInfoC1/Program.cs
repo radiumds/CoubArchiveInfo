@@ -11,17 +11,20 @@ namespace CoubArchiveInfoC1
     class Program
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private 
 
-        static void CoubList()
-        {
-
-        }
         static void Main(string[] args)
         {
             try
             {
                //Logger.Info("Nice");
                 System.Console.ReadKey();
+                TList coub = new TList("D:\\CurrentDir\\Coubs\\radiumds");
+                TList json = new TList("D:\\CurrentDir\\Coubs\\radiumds\\json");
+                if (coub.length > json.length)
+                {
+                    
+                }
             }
             catch (Exception ex)
             {
