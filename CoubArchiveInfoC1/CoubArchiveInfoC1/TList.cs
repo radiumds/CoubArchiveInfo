@@ -1,11 +1,14 @@
 ﻿using System.IO;
 using System.Net;
+using NLog;
+using System;
 
 namespace CoubArchiveInfoC1
 {
     class TList
     {
-        private int current;
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        public int current;
         public int length;
         string[] list;
         public TList(string path)
@@ -15,9 +18,9 @@ namespace CoubArchiveInfoC1
             current = 0;
             for (int i = 0; i < length; i++)
             {
-                list[i] = list[i].Split('.')[0]; 
+                list[i] = Path.GetFileNameWithoutExtension(list[i]); 
             }
-
+           
         }
         public TList()
         {
@@ -38,10 +41,18 @@ namespace CoubArchiveInfoC1
         }
         public void GetFiles(string path, string name)
         {
-            WebClient wcj = new WebClient();
-            string remoteUri = "http://coub.com/api/v2/coubs/"+name;
-            string fileName = "D:\\CurrentDir\\Coubs\\radiumds\\json\\"+name+".json";
-            wcj.DownloadFile(remoteUri, fileName);
+            try
+            {
+                WebClient wcj = new WebClient();
+                string remoteUri = "http://coub.com/api/v2/coubs/" + name;
+                string fileName = "D:\\CurrentDir\\Coubs\\radiumds\\json\\" + name + ".json";
+                wcj.DownloadFile(remoteUri, fileName);
+            }
+            catch(Exception exg)
+            {
+                Logger.Info(exg, "This coub was deleted: http://coub.com/api/v2/coubs/"+name);
+                File.Create("D:\\CurrentDir\\Coubs\\radiumds\\json\\" + name + ".json");
+            }
         }
     }
 }

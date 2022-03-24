@@ -20,17 +20,26 @@ namespace CoubArchiveInfoC1
             TList json = new TList(jpath);
             if (coub.length > json.length)
             {
-                if (json.Cur() == coub.Cur())
+                while (coub.current < coub.length)
                 {
-                    json.Next();
-                    coub.Next();
-                }
-                else
-                {
-                    json.GetFiles(jpath, coub.Cur());
-                    coub.Next();
+
+                        if (json.Cur() == coub.Cur())
+                        {
+                            json.Next();
+                            coub.Next();
+                        }
+                        else
+                        {
+                            json.GetFiles(jpath, coub.Cur());
+                            coub.Next();
+
+                        }
                 }
             }
+
+
+
+
         }
 
         static void Main(string[] args)
@@ -40,10 +49,7 @@ namespace CoubArchiveInfoC1
                //Logger.Info("Nice");
                 System.Console.ReadKey();
                 Work();
-                WebClient test = new WebClient();
-                string remoteUri = "http://coub.com/api/v2/coubs/30i5c9";
-                string fileName = "D:\\CurrentDir\\Coubs\\radiumds\\json\\30i5c9.json";
-                test.DownloadFile(remoteUri, fileName);
+                
 
 
             }
