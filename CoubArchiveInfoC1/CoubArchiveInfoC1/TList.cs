@@ -51,7 +51,7 @@ namespace CoubArchiveInfoC1
             catch(Exception exg)
             {
                 Logger.Info(exg, "This coub was deleted: http://coub.com/api/v2/coubs/"+name);
-                File.Create("D:\\CurrentDir\\Coubs\\radiumds\\json\\" + name + ".json");
+                File.Create("**dirname**\\" + name + ".json");
             }
         }
     }
