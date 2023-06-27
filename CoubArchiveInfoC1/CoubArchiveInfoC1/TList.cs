@@ -45,7 +45,7 @@ namespace CoubArchiveInfoC1
             {
                 WebClient wcj = new WebClient();
                 string remoteUri = "http://coub.com/api/v2/coubs/" + name;
-                string fileName = "D:\\CurrentDir\\Coubs\\radiumds\\json\\" + name + ".json";
+                string fileName = "**dirname**\\json\\" + name + ".json";
                 wcj.DownloadFile(remoteUri, fileName);
             }
             catch(Exception exg)
